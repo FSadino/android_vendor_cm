@@ -173,8 +173,8 @@ PRODUCT_PACKAGES += \
     zip
     
 # Masquerade
-PRODUCT_PACKAGES += \
-    masquerade
+#PRODUCT_PACKAGES += \
+#   masquerade
 
 # Custom off-mode charger
 ifneq ($(WITH_CM_CHARGER),false)
