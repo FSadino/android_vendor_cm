@@ -109,6 +109,9 @@ else
       TARGET_PREBUILT_INT_KERNEL_TYPE := zImage
     endif
   endif
+  ifeq ($(TARGET_KERNEL_APPEND_DTB),true)
+    TARGET_PREBUILT_INT_KERNEL_TYPE := $(TARGET_PREBUILT_INT_KERNEL_TYPE)-dtb
+  endif
 endif
 
 TARGET_PREBUILT_INT_KERNEL := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(TARGET_PREBUILT_INT_KERNEL_TYPE)
@@ -138,16 +141,6 @@ KERNEL_ADDITIONAL_CONFIG_SRC := $(KERNEL_SRC)/arch/$(KERNEL_ARCH)/configs/$(KERN
     endif
 else
     KERNEL_ADDITIONAL_CONFIG_SRC := /dev/null
-endif
-
-## Do be discontinued in a future version. Notify builder about target
-## kernel format requirement
-ifeq ($(BOARD_KERNEL_IMAGE_NAME),)
-ifeq ($(BOARD_USES_UBOOT),true)
-        $(error "Please set BOARD_KERNEL_IMAGE_NAME to uImage")
-else ifeq ($(BOARD_USES_UNCOMPRESSED_BOOT),true)
-        $(error "Please set BOARD_KERNEL_IMAGE_NAME to Image")
-endif
 endif
 
 ifeq "$(wildcard $(KERNEL_SRC) )" ""
