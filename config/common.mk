@@ -172,9 +172,10 @@ PRODUCT_PACKAGES += \
     wget \
     zip
     
-# Masquerade
+# FSadino packages
 PRODUCT_PACKAGES += \
-   masquerade
+   masquerade \
+   FSadinoStuff
 
 # Custom off-mode charger
 ifneq ($(WITH_CM_CHARGER),false)
